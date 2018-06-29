@@ -1,3 +1,5 @@
+# Version:	PyInstaller 3.2
+
 How to install Pyinstaller
 ==========================
 installed commands
@@ -46,6 +48,7 @@ Bundling to One Folder
 pros:
 * 容易debug
 * 改code對整個資料夾異動不大
+
 cons:
 * 產生的檔案數量很多
 
@@ -59,12 +62,19 @@ Bundling to One File
 --------------------
 pros:
 * 檔案好找, 方便執行
+
 cons:
 * 其他檔案像是README需要另外放置
 * 啟動速度比 one-folder bundle 還慢
 
 How the One-File Program Works
 ------------------------------
+> The bootloader is the heart of the one-file bundle also. When started it creates a temporary folder in the appropriate temp-folder location for this OS. The folder is named `_MEIxxxxxx`, where xxxxxx is a random number.
+> 同樣依賴 `bootloader`, 不過是建立tmp folder 並解壓檔案到folder裡, 這也是為什麼 one-file app 速度會比 one-folder app 慢
+
+> Do not give administrator privileges to a one-file executable (setuid root in Unix/Linux, or the “Run this program as an administrator” property in Windows 7). There is an unlikely but not impossible way in which a malicious attacker could corrupt one of the shared libraries in the temp folder while the bootloader is preparing it. Distribute a privileged program in one-folder mode instead.
+
+> Applications that use os.setuid() may encounter permissions errors. The temporary folder where the bundled app runs may not being readable after setuid is called. If your script needs to call setuid, it may be better to use one-folder mode so as to have more control over the permissions on its files.
 
 
 
