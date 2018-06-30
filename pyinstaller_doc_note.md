@@ -32,7 +32,9 @@ PyInstaller also knows about many major Python packages, including the GUI packa
 > pyinstaller 接受egg作為import來源
 
 # 問題:
-* 有些modules無法偵測到, e.g. `__import__()`, `sys.path`
+* 有些modules無法偵測到
+* e.g. `__import__()`, `sys.path`, etc.
+
 # 解法:
 * 在command line 額外增加 檔案
 * 在command line 增加額外 路徑
@@ -75,6 +77,44 @@ How the One-File Program Works
 > Do not give administrator privileges to a one-file executable (setuid root in Unix/Linux, or the “Run this program as an administrator” property in Windows 7). There is an unlikely but not impossible way in which a malicious attacker could corrupt one of the shared libraries in the temp folder while the bootloader is preparing it. Distribute a privileged program in one-folder mode instead.
 
 > Applications that use os.setuid() may encounter permissions errors. The temporary folder where the bundled app runs may not being readable after setuid is called. If your script needs to call setuid, it may be better to use one-folder mode so as to have more control over the permissions on its files.
+
+Using a Console Window
+----------------------
+> Do this when your script has a graphical interface for user input and can properly report its own diagnostics.
+
+Hiding the Source Code
+----------------------
+bundled app 並沒有包含 source code.而是經過 compiled 過的 .pyc, 不過也是有可能會被 decompiled 去了解程式邏輯
+
+解決方法: Cython
+modules ----convert----> C ----compile---> machine language
+
+Pyinstaller 可以 import Cython C object 然後打包他們
+
+> PyInstaller can follow import statements that refer to Cython C object modules and bundle them.
+
+Python bytecode 可以透過 AES256 加密 bytecode, 但還是容易被解回原來的bytecode...
+
+Using PyInstaller
+=================
+``` bash
+$ pyinstaller myscript.py
+```
+
+PyInstaller analyzes myscript.py and:
+1. Writes myscript.spec in the same folder as the script.
+2. Creates a folder `build` in the same folder as the script if it does not exist.
+3. Writes some log files and working files in the `build` folder.
+4. Creates a folder `dist` in the same folder as the script if it does not exist.
+5. Writes the myscript executable folder in the `dist` folder.
+6. 
+
+
+
+
+
+
+
 
 
 
