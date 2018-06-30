@@ -112,9 +112,28 @@ PyInstaller analyzes myscript.py and:
 
 > Normally you name one script on the command line. If you name more, all are analyzed and included in the output. However, the first script named supplies the name for the spec file and for the executable folder or file. Its code is the first to execute at run-time.
 
- Pyinstall 可以允許包多個scripts, 然而執行時是第一個script的code會啟動
+Pyinstall 可以允許包多個scripts, 然而執行時是執行第一個script的code
  
- 
+> For certain uses you may edit the contents of myscript.spec (described under Using Spec Files). After you do this, you name the spec file to PyInstaller instead of the script:
+``` bash
+$ pyinstaller myscript.spec
+```
+
+Options
+-------
+略, 直接去看文件
+
+Using UPX
+---------
+被UPX壓縮過後的執行順序：
+1. The compressed program start up in the UPX decompressor code.
+2. After decompression, the program executes the PyInstaller bootloader, which creates a temporary environment for Python.
+4. The Python interpreter executes your script.
+
+Encrypting Python Bytecode
+--------------------------
+* PyCrypto
+
 
 
 
