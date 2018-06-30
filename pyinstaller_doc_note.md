@@ -107,9 +107,12 @@ PyInstaller analyzes myscript.py and:
 3. Writes some log files and working files in the `build` folder.
 4. Creates a folder `dist` in the same folder as the script if it does not exist.
 5. Writes the myscript executable folder in the `dist` folder.
-6. 
 
+> Normally you name one script on the command line. If you name more, all are analyzed and included in the output. However, the first script named supplies the name for the spec file and for the executable folder or file. Its code is the first to execute at run-time.
 
+ Pyinstall 可以允許包多個scripts, 然而執行時是第一個script的code會啟動
+ 
+ 
 
 
 
