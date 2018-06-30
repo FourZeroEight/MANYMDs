@@ -57,7 +57,8 @@ cons:
 How the One-Folder Program Works
 --------------------------------
 > A bundled program always starts execution in the PyInstaller **bootloader**. This is the heart of the myscript executable in the folder.
-> bootloader 造一個暫時性的 python 環境, 讓 interpreter 可以在資料夾裡找到想要的modules
+
+bootloader 造一個暫時性的 python 環境, 讓 interpreter 可以在資料夾裡找到想要的modules
 > (This is an overview. For more detail, see **The Bootstrap Process in Detail below**.)
 
 Bundling to One File
@@ -72,7 +73,8 @@ cons:
 How the One-File Program Works
 ------------------------------
 > The bootloader is the heart of the one-file bundle also. When started it creates a temporary folder in the appropriate temp-folder location for this OS. The folder is named `_MEIxxxxxx`, where xxxxxx is a random number.
-> 同樣依賴 `bootloader`, 不過是建立tmp folder 並解壓檔案到folder裡, 這也是為什麼 one-file app 速度會比 one-folder app 慢
+
+同樣依賴 `bootloader`, 不過是建立tmp folder 並解壓檔案到folder裡, 這也是為什麼 one-file app 速度會比 one-folder app 慢
 
 > Do not give administrator privileges to a one-file executable (setuid root in Unix/Linux, or the “Run this program as an administrator” property in Windows 7). There is an unlikely but not impossible way in which a malicious attacker could corrupt one of the shared libraries in the temp folder while the bootloader is preparing it. Distribute a privileged program in one-folder mode instead.
 
