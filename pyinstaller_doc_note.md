@@ -134,10 +134,33 @@ Encrypting Python Bytecode
 --------------------------
 * PyCrypto
 
+Supporting Multiple Platforms
+-----------------------------
+目前開發沒有多平台或多版本的需求, 略
 
+Making Linux Apps Forward-Compatible
+------------------------------------
+在Linux環境, bundled app 並不包含 `libc`, 而是**動態連結**執行環境時OS的 `libc`
 
+問題:
+* 所以可能在新版打包的 app, 在舊版的 Linux 無法執行
 
+解決方法: 
+* 在舊版的 Linux 打包 app, 比較可以確保在之後新版的 Linux 可以正常執行
 
+Capturing Windows Version Data
+------------------------------
+目前工作沒這需求, 略
+
+Building Mac OS X App Bundles
+-----------------------------
+目前工作沒這需求, 略
+
+Run-time Information
+--------------------
+還不清楚應用在哪
+> In order to locate included files at run time, your program needs to be able to learn its path at run time in a way that
+works regardless of whether or not it is running from a bundle.
 
 
 
