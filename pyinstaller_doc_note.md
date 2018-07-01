@@ -157,13 +157,20 @@ Building Mac OS X App Bundles
 目前工作沒這需求, 略
 
 Run-time Information
---------------------
+====================
 還不清楚應用在哪
 > In order to locate included files at run time, your program needs to be able to learn its path at run time in a way that
 works regardless of whether or not it is running from a bundle.
 
+Using Spec Files
+================
+> The spec file tells PyInstaller how to process your script. It encodes the script names and most of the options you give to the pyinstaller command. The spec file is actually executable Python code. PyInstaller builds the app by executing the contents of the spec file.
 
-
+There are four cases where it is useful to modify the spec file:
+1. When you want to bundle data files with the app.
+2. When you want to include run-time libraries (.dll or .so files) that PyInstaller does not know about from any other source.
+3. When you want to add Python run-time options to the executable.
+4. When you want to create a multiprogram bundle with merged common modules.
 
 
 
