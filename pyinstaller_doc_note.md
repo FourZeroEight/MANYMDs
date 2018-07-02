@@ -172,5 +172,23 @@ There are four cases where it is useful to modify the spec file:
 3. When you want to add Python run-time options to the executable.
 4. When you want to create a multiprogram bundle with merged common modules.
 
+``` bash
+# build one-folder apps
+$ pyinstaller foobarzap.spec
 
+# build one-file apps
+$ pyi-build foobarzap.spec
+```
 
+Notes about specific Features
+=============================
+Cython support
+--------------
+> PyInstaller can not determine if the Cython C object module is importing some Python module. These will typically show up as in a traceback like this (mind the .pyx extension):
+``` bash
+Traceback (most recent call last):
+[…]
+File "myapp\cython_module.pyx", line 3, in init myapp.cython_module
+ModuleNotFoundError: No module named 'csv'
+```
+> So if you are using a Cython C object module, which imports Python modules, you will have to list these as `--hidden-import`.
