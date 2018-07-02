@@ -173,11 +173,14 @@ There are four cases where it is useful to modify the spec file:
 4. When you want to create a multiprogram bundle with merged common modules.
 
 ``` bash
+# make spec file
+$ pyi-makespec xxx.py
+
 # build one-folder apps
-$ pyinstaller foobarzap.spec
+$ pyinstaller xxx.spec
 
 # build one-file apps
-$ pyi-build foobarzap.spec
+$ pyi-build xxx.spec
 ```
 
 Notes about specific Features
