@@ -123,6 +123,17 @@ Options
 -------
 略, 直接去看文件
 
+Running PyInstaller with Python optimizations
+---------------------------------------------
+* 還沒測試優化效果如何
+```
+# run with basic optimizations
+python -O -m PyInstaller myscript.py
+
+# also discard docstrings
+python -OO -m PyInstaller myscript.py
+```
+
 Using UPX
 ---------
 被UPX壓縮過後的執行順序：
@@ -133,6 +144,20 @@ Using UPX
 Encrypting Python Bytecode
 --------------------------
 * PyCrypto
+
+
+> Please note that it is still very easy to extract the key and get back the original bytecode, but it should prevent most forms of “casual” tampering.
+
+```Shortening the Command
+--key = 'xxxxxxxxxxxxxxxx'
+```
+
+Defining the Extraction Location
+--------------------------------
+可以手動決定暫存檔位置, 避免執行過程中掛掉, 檔案遺留在 /tmp 浪費空間
+```
+ --runtime-tmpdir = .
+```
 
 Supporting Multiple Platforms
 -----------------------------
